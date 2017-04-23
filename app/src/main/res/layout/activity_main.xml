@@ -50,16 +50,33 @@
         android:paddingBottom="20dp" />
 
     <Chronometer
-        android:id="@+id/chronometer"
+        android:id="@+id/chronometer1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:textSize="20sp"
         android:countDown="true"
-        android:layout_marginBottom="10dp" />
+        android:layout_marginBottom="5dp" />
 
     <Button
-        android:id="@+id/timerButton"
+        android:id="@+id/timerButton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Start"
+        android:layout_marginBottom="30dp" />
+
+    <Chronometer
+        android:id="@+id/chronometer2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:countDown="true"
+        android:layout_marginBottom="5dp" />
+
+    <Button
+        android:id="@+id/timerButton2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

@@ -10,7 +10,7 @@ import org.jetbrains.anko.onClick
 import org.jetbrains.anko.toast
 
 class MainActivity : Activity() {
-    val timerStartValue: Long = 20000
+    val timerStartValueInMilliSecs: Long = 20000
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,9 +18,13 @@ class MainActivity : Activity() {
 
         sendButton.onClick { sendSms() }
 
-        chronometer.base = SystemClock.elapsedRealtime() + timerStartValue
-        chronometer.setOnChronometerTickListener { chronometerListener() }
-        timerButton.onClick { startTimer() }
+        chronometer1.base = SystemClock.elapsedRealtime() + timerStartValueInMilliSecs
+        chronometer1.setOnChronometerTickListener { chronometerListener1() }
+        timerButton1.onClick { startTimer1() }
+
+        chronometer2.base = SystemClock.elapsedRealtime() + timerStartValueInMilliSecs
+        chronometer2.setOnChronometerTickListener { chronometerListener2() }
+        timerButton2.onClick { startTimer2() }
     }
 
     fun sendSms() {
@@ -42,20 +46,38 @@ class MainActivity : Activity() {
         toast("Message sent")
     }
 
-    fun startTimer() {
+    fun startTimer1() {
 
-        chronometer.base = SystemClock.elapsedRealtime() + timerStartValue
-        chronometer.start()
-        timerButton.text = "Reset"
+        chronometer1.base = SystemClock.elapsedRealtime() + timerStartValueInMilliSecs
+        chronometer1.start()
+        timerButton1.text = "Reset"
     }
 
-    fun chronometerListener() {
+    fun startTimer2() {
 
-        if (chronometer.base < SystemClock.elapsedRealtime()) {
+        chronometer2.base = SystemClock.elapsedRealtime() + timerStartValueInMilliSecs
+        chronometer2.start()
+        timerButton2.text = "Reset"
+    }
 
-            chronometer.stop()
-            timerButton.text = "Start"
-            toast("Timer expired!")
+    fun chronometerListener1() {
+
+        if (chronometer1.base < SystemClock.elapsedRealtime()) {
+
+            chronometer1.stop()
+            chronometer1.base = SystemClock.elapsedRealtime()
+            timerButton1.text = "Start"
+            toast("Timer1 expired!")
+        }
+    }
+    fun chronometerListener2() {
+
+        if (chronometer2.base < SystemClock.elapsedRealtime()) {
+
+            chronometer2.stop()
+            chronometer2.base = SystemClock.elapsedRealtime()
+            timerButton2.text = "Start"
+            toast("Timer2 expired!")
         }
     }
 }
